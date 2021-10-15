@@ -2,9 +2,12 @@ require 'peep'
 
 describe Peep do
 
-  describe '.add' do
+  describe '.create' do
+    it 'adds a new peep' do
+      Peep.create(content: 'Just another peep')
 
-
+      expect(Peep.all).to include('Just another peep')
+    end
   end
 
   describe '.all' do
