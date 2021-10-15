@@ -1,4 +1,4 @@
-feature 'Post a peep' do
+feature 'Posting a peep' do
   
   scenario 'a user can add a peep' do
     visit '/'
@@ -6,6 +6,6 @@ feature 'Post a peep' do
     click_button 'Chit your peep'
 
     expect(current_path).to eq '/peep/index'
-    expecct(page).to have_content 'Hello chitters'
+    expect(page).to have_content 'Hello chitters'
   end
 end
