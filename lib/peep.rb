@@ -3,7 +3,7 @@ require 'pg'
 class Peep
 
   def self.all
-    if ENV['RAC_ENV'] == 'test'
+    if ENV['RACK_ENV'] == 'test'
       connection = PG.connect(dbname: 'chitter_test')
     else
       connection = PG.connect(dbname: 'chitter')
@@ -14,7 +14,7 @@ class Peep
   end
 
   def self.create(content:)
-    if ENV['RAC_ENV'] == 'test'
+    if ENV['RACK_ENV'] == 'test'
       connection = PG.connect(dbname: 'chitter_test')
     else
       connection = PG.connect(dbname: 'chitter')

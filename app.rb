@@ -2,11 +2,11 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
-# require 'time'
 
 class Chitter < Sinatra::Base
   enable :sessions, :method_override
   register Sinatra::Flash
+
     configure :development do
       register Sinatra::Reloader
     end
