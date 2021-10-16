@@ -1,1 +1,1 @@
-CREATE TABLE peeps (id SERIAL PRIMARY KEY, content VARCHAR(280), created_at TIMESTAMP);
+CREATE TABLE peeps (id SERIAL PRIMARY KEY, content VARCHAR(280), created_at TIMESTAMP DEFAULT now());

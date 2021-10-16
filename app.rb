@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
-require 'time'
+# require 'time'
 
 class Chitter < Sinatra::Base
   enable :sessions, :method_override
@@ -16,7 +16,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/peep/new' do
-    Peep.create(content: params[:peep], created_at: Time.now)
+    Peep.create(content: params[:peep])
     redirect :'peep/index'
   end
 

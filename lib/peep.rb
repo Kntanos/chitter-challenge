@@ -1,4 +1,3 @@
-require 'time'
 require 'pg'
 
 class Peep
@@ -14,13 +13,13 @@ class Peep
     result.map { |peep| peep['content']}
   end
 
-  def self.create(content:, created_at: Time.now)
+  def self.create(content:)
     if ENV['RAC_ENV'] == 'test'
       connection = PG.connect(dbname: 'chitter_test')
     else
       connection = PG.connect(dbname: 'chitter')
     end
 
-    connection.exec("INSERT INTO peeps (content, created_at) VALUES ('#{content}', '#{created_at}');")
+    connection.exec("INSERT INTO peeps (content) VALUES ('#{content}');")
   end
 end
