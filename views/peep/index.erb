@@ -1,6 +1,6 @@
 <h2>You haven't really missed much..</h2>
 <ul>
 <% @peeps.each do |peep| %>
-<li><%= peep.content %></li>
+<li><%= "#{peep.content} - chitted at #{DateTime.parse(peep.created_at).strftime('%H:%M on %d/%m/%y')}" %></li>
 <% end %>
 </ul>
