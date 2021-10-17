@@ -31,11 +31,14 @@ class Chitter < Sinatra::Base
   end
 
   post '/user/new' do
-    User.create(email: params[:email], 
+     if User.create(email: params[:email], 
       password: params[:password], 
       name: params[:name], 
       username: params[:username])
-    flash[:notice] = "Sign up succesful"
+      flash[:notice] = "Sign up succesful"
+     else
+      flash[:notice] = "You must provide a valid email address"
+     end
     redirect :'user/new'
   end
 

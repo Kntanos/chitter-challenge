@@ -14,6 +14,7 @@ attr_reader :id, :email, :password, :name, :username
   end
 
   def self.create(email:, password:, name:, username:)
+    return false unless is_email?(email)
     encrypted_password = BCrypt::Password.create(password)
 
     if ENV['RACK_ENV'] == 'test'
@@ -31,5 +32,11 @@ attr_reader :id, :email, :password, :name, :username
       password: result[0]['password'],
       name: result[0]['name'],
       username: result[0]['username']) 
+  end
+
+  private
+  
+  def self.is_email?(email)
+    email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i 
   end
 end
