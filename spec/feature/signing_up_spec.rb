@@ -5,4 +5,11 @@ feature 'Signing up as a user' do
 
     expect(page).to have_content "Sign up to Chitter" 
   end
+
+  scenario 'a user can submit their details' do
+    visit '/user/new'
+    click_button 'Submit'
+
+    expect(page).to have_content 'Sign up succesful'
+  end
 end

@@ -29,5 +29,10 @@ class Chitter < Sinatra::Base
     erb :'user/new'
   end
 
+  post '/user/new' do
+    flash[:notice] = "Sign up succesful"
+    redirect :'user/new'
+  end
+
   run! if app_file ==$0
 end
