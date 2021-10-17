@@ -31,6 +31,10 @@ class Chitter < Sinatra::Base
   end
 
   post '/user/new' do
+    User.create(email: params[:email], 
+      password: params[:password], 
+      name: params[:name], 
+      username: params[:username])
     flash[:notice] = "Sign up succesful"
     redirect :'user/new'
   end

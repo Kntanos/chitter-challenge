@@ -1,4 +1,5 @@
 require 'pg'
+require 'BCrypt'
 
 class User 
 
@@ -13,6 +14,8 @@ attr_reader :id, :email, :password, :name, :username
   end
 
   def self.create(email:, password:, name:, username:)
+    encrypted_password = BCrypt::Password.create(password)
+
     if ENV['RACK_ENV'] == 'test'
       connection = PG.connect(dbname: 'chitter_test')
     else
@@ -21,7 +24,7 @@ attr_reader :id, :email, :password, :name, :username
 
     result = connection.exec_params("INSERT INTO users (email, password, name, username)
     VALUES($1, $2, $3, $4)
-    RETURNING id, email, password, name, username;", [email, password, name, username])
+    RETURNING id, email, password, name, username;", [email, encrypted_password, name, username])
 
     User.new(id: result[0]['id'],
       email: result[0]['email'],
