@@ -8,9 +8,9 @@ class Chitter < Sinatra::Base
   enable :sessions, :method_override
   register Sinatra::Flash
 
-    configure :development do
-      register Sinatra::Reloader
-    end
+  configure :development do
+    register Sinatra::Reloader
+  end
 
   get '/' do
     erb :index
@@ -31,16 +31,16 @@ class Chitter < Sinatra::Base
   end
 
   post '/user/new' do
-     if User.create(email: params[:email], 
-      password: params[:password], 
-      name: params[:name], 
-      username: params[:username])
+    if User.create(email: params[:email], 
+     password: params[:password], 
+     name: params[:name], 
+     username: params[:username])
       flash[:notice] = "Sign up succesful"
-     else
+    else
       flash[:notice] = "You must provide a valid email address"
-     end
+    end
     redirect :'user/new'
   end
 
-  run! if app_file ==$0
+  run! if app_file == $0
 end

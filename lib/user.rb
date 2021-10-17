@@ -3,7 +3,7 @@ require 'BCrypt'
 
 class User 
 
-attr_reader :id, :email, :password, :name, :username
+  attr_reader :id, :email, :password, :name, :username
 
   def initialize(id:, email:, password:, name:, username:)
     @id = id
@@ -33,8 +33,6 @@ attr_reader :id, :email, :password, :name, :username
       name: result[0]['name'],
       username: result[0]['username']) 
   end
-
-  private
   
   def self.is_email?(email)
     email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i 

@@ -1,5 +1,4 @@
-# Chitter Challenge
-====================
+# Chitter Weekend Challenge
 
 Connect to `psql` and create the `chitter` and the `chitter_test` databases:
 ```
@@ -27,12 +26,13 @@ So that I can post messages on Chitter as me
 I want to sign up for Chitter
 ```
 
-Passwords are encrypted using BCrypt and users cannot sign up without a valid email address.
+Passwords are encrypted using BCrypt and users cannot sign up without a valid email address.  
 Email addresses and usernames must be unique.
 
 The app is built using:  
 Ruby  
 Sinatra  
+PostgreSQL  
 Rspec  
 Capybara  
 HTML
